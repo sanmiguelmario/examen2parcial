@@ -1,0 +1,55 @@
+int boton = 2;
+int ledrojo= 5;
+int ledverde= 4;
+int ledamarillo= 3;
+int estado;
+int veces = 0;
+
+void setup (){
+  pinMode(boton,INPUT_PULLUP);
+  pinMode(ledrojo,OUTPUT);
+  pinMode(ledverde,OUTPUT);
+  pinMode(ledamarillo,OUTPUT);
+  Serial.begin (9600);
+}
+void loop (){
+estado =  digitalRead (boton);
+  Serial.println(veces);
+  
+  if (estado==0){
+  veces++;
+    delay(1000);
+  }
+  if (veces ==0){
+  digitalWrite(ledrojo,LOW);
+  digitalWrite(ledverde,LOW);
+  digitalWrite(ledamarillo,LOW);
+ }
+  if ( veces ==1){
+  digitalWrite(ledrojo,HIGH);
+    delay(500);
+    digitalWrite(ledrojo,LOW);
+    delay(500);
+  }
+  if ( veces ==2){
+  digitalWrite(ledrojo,HIGH);
+  digitalWrite(ledverde,HIGH);
+    delay(500);
+    digitalWrite(ledrojo,LOW);
+    digitalWrite(ledverde,LOW);
+    delay(500);
+    
+  }
+  if (veces ==3) {
+  digitalWrite(ledrojo,HIGH);
+  digitalWrite(ledverde,HIGH);
+   digitalWrite(ledamarillo,HIGH);
+    delay(500);
+    digitalWrite(ledrojo,LOW);
+    digitalWrite(ledverde,LOW);
+    digitalWrite(ledamarillo,LOW);
+    delay(500);}
+  if(veces>3){
+  veces=1;
+  }
+}
